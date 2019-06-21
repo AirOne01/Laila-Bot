@@ -14,7 +14,9 @@ const Discord = require('discord.js');
 const DiscordClient = new Discord.Client();
 
 const cfg = require('../config/config.json');
-const commandAvatar = require('./commands/avatar');
+const commandAvatar = require('./commands/avatar.js');
+const commandHelp = require('./commands/help.js');
+const commandOsu = require('./commands/osu.js');
 
 const prefix = cfg.prefix;
 
@@ -41,8 +43,19 @@ DiscordClient.on('message', (msg) => {
 
                     commandAvatar(msg, args, DiscordClient);
                     break;
+                    
+                case 'osu':
 
-                
+                    commandOsu(msg, args, DiscordClient);    
+                    break;
+
+                case 'commands':
+                case '?':
+                case 'cmd':
+                case 'help':
+
+                    commandHelp(msg, args, DiscordClient);
+                    break;
 
             }
 
