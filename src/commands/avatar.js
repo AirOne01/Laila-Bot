@@ -11,7 +11,7 @@ module.exports = function (msg, args, DiscordClient) {
                                                 // If no args are provided or the author asked for its own avatar
         embed = new Discord.RichEmbed()
             .setColor(cfg.color)
-            .setTitle('Your avatar :')
+            .setTitle('Your avatar : (' + msg.mentions.users.first().tag + ')')
             .setImage(msg.author.avatarURL);    // The bot simply send the message author's avatar
 
         msg.channel.send(embed);
@@ -20,7 +20,7 @@ module.exports = function (msg, args, DiscordClient) {
                                                 // If the message author asked for the bot avatar:
         embed = new Discord.RichEmbed()
             .setColor(cfg.color)
-            .setTitle('My avatar :')
+            .setTitle('My avatar : (' + msg.mentions.users.first().tag + ')')
             .setImage(DiscordClient.user.avatarURL)
                                                 // Send the bot avatar
         msg.channel.send(embed);
@@ -29,7 +29,7 @@ module.exports = function (msg, args, DiscordClient) {
 
         embed = new Discord.RichEmbed()
             .setColor(cfg.color)
-            .setTitle(msg.mentions.users.first().username + '\'s avatar')
+            .setTitle(msg.mentions.users.first().username + '\'s avatar (' + msg.mentions.users.first().tag + ')')
             .setImage(msg.mentions.users.first().avatarURL)
 
         msg.channel.send(embed);
