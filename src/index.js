@@ -17,6 +17,7 @@ const cfg = require('../config/config.json');
 const commandAvatar = require('./commands/avatar.js');
 const commandHelp = require('./commands/help.js');
 const commandOsu = require('./commands/osu.js');
+const commandTweet = require('./commands/tweet.js');
 
 const prefix = cfg.prefix;
 
@@ -55,6 +56,12 @@ DiscordClient.on('message', (msg) => {
                 case 'help':
 
                     commandHelp(msg, args, DiscordClient);
+                    break;
+
+                case 'twitter':
+                case 'tweet':
+
+                    commandTweet(msg, args, DiscordClient);
                     break;
 
             }
