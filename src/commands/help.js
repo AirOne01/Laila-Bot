@@ -11,7 +11,7 @@ module.exports = function (msg, args, DiscordClient) {
         embed = new Discord.RichEmbed()
             .setColor(cfg.color)
             .setTitle('Command list')
-            .addField('Games', 'osu [user] <username>', true)
+            .addField('Games', 'mcserv <IP>\nosu [user] <username>', true)
             .addField('Utility', 'avatar <@Username>\nhelp <command>', true);
 
         msg.channel.send(embed);
@@ -41,6 +41,16 @@ module.exports = function (msg, args, DiscordClient) {
                     .setTitle('\'help\' command')
                     .setDescription('Get you the list of all the bot commands or infotmations on a command.\nUsage:\n```\nhelp\n```\nor\n```\nhelp <command>\n```')
                     .addField('Other names:', 'help, ?, commands, cmd')
+
+                msg.channel.send(embed);
+                break;
+
+            case 'mcserv':
+
+                embed = new Discord.RichEmbed()
+                    .setColor(cfg.color)
+                    .setTitle('\'mcserv\' command')
+                    .setDescription('Get informations about a Minecraft server.\nUsage:\n```\nmcser <IP>\n```')
 
                 msg.channel.send(embed);
                 break;

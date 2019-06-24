@@ -43,6 +43,9 @@ module.exports = function (msg, args, DiscordClient) {
                         })
 
                 })
+                .catch(function(err) {
+                    console.log('[osuAPI] Error in getting the best beatmap of ' + username + '.\nError :\n')
+                })
     
             
             

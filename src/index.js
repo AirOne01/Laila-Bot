@@ -16,6 +16,7 @@ const DiscordClient = new Discord.Client();
 const cfg = require('../config/config.json');
 const commandAvatar = require('./commands/avatar.js');
 const commandHelp = require('./commands/help.js');
+const commandMCserv = require('./commands/mc.js');
 const commandOsu = require('./commands/osu.js');
 const commandTweet = require('./commands/tweet.js');
 
@@ -63,6 +64,10 @@ DiscordClient.on('message', (msg) => {
 
                     commandTweet(msg, args, DiscordClient);
                     break;
+
+                case 'mcserv':
+                    
+                    commandMCserv(msg, args, DiscordClient);
 
             }
 

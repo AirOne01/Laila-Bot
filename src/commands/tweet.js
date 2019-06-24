@@ -88,7 +88,7 @@ module.exports = function (msg, args, DiscordClient) {
 
                 if (err[0].code == 17) {
 
-                    twitterClient.get('users/search', {q: args[1], count : 1}, function(err, user) {
+                    twitterClient.get('users/search', {q : args[1], count : 1, page : 1}, function(err, user) {
 
                         if (!user[0]) {
 
