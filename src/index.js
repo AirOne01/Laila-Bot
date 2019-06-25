@@ -15,6 +15,7 @@ const DiscordClient = new Discord.Client();
 
 const cfg = require('../config/config.json');
 const commandAvatar = require('./commands/avatar.js');
+const commandGuildInfo = require('./commands/guildinfo.js');
 const commandHelp = require('./commands/help.js');
 const commandMAL = require('./commands/mal.js');
 const commandMCserv = require('./commands/mc.js');
@@ -74,6 +75,11 @@ DiscordClient.on('message', (msg) => {
                     commandMAL(msg, args, DiscordClient);
                     break;
 
+                case 'guild':
+                case 'guildinfo':
+
+                    commandGuildInfo(msg, args, DiscordClient);
+                    break;
             }
 
         }
