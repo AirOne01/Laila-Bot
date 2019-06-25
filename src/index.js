@@ -16,6 +16,7 @@ const DiscordClient = new Discord.Client();
 const cfg = require('../config/config.json');
 const commandAvatar = require('./commands/avatar.js');
 const commandHelp = require('./commands/help.js');
+const commandMAL = require('./commands/mal.js');
 const commandMCserv = require('./commands/mc.js');
 const commandOsu = require('./commands/osu.js');
 const commandTweet = require('./commands/tweet.js');
@@ -40,8 +41,6 @@ DiscordClient.on('message', (msg) => {
             switch (command) {
 
                 case 'avatar':
-
-                    console.log(typeof(DiscordClient.user.id));
 
                     commandAvatar(msg, args, DiscordClient);
                     break;
@@ -68,6 +67,12 @@ DiscordClient.on('message', (msg) => {
                 case 'mcserv':
                     
                     commandMCserv(msg, args, DiscordClient);
+                    break;
+
+                case 'mal':
+
+                    commandMAL(msg, args, DiscordClient);
+                    break;
 
             }
 
@@ -75,6 +80,12 @@ DiscordClient.on('message', (msg) => {
 
     }
 
+})
+
+DiscordClient.on('guildCreate', (guild) => {
+
+    guild.members.first().send('Laila Bot isn\'t usable for now. Come back when the bot is not in developpement state anymore :)')
+    guild.leave();
 })
 
 DiscordClient.login(cfg.discordToken);
