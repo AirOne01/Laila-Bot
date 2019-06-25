@@ -29,7 +29,7 @@ module.exports = function (msg, args, DiscordClient) {
 
                 } else {
 
-                    motd = 'This server is offline.'
+                    motd = 'The server is offline or Its IP could not be resolved.'
                 }
 
                 const embed = new Discord.RichEmbed()

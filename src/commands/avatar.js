@@ -11,7 +11,7 @@ module.exports = function (msg, args, DiscordClient) {
                                                 // If no args are provided or the author asked for its own avatar
         embed = new Discord.RichEmbed()
             .setColor(cfg.color)
-            .setTitle('Your avatar : (' + msg.mentions.users.first().tag + ')')
+            .setTitle('Your avatar :')
             .setImage(msg.author.avatarURL);    // The bot simply send the message author's avatar
 
         msg.channel.send(embed);
