@@ -19,6 +19,7 @@ const commandGuildInfo = require('./commands/guildinfo.js');
 const commandHelp = require('./commands/help.js');
 const commandMAL = require('./commands/mal.js');
 const commandMCserv = require('./commands/mc.js');
+const commandAudioMute = require('./commands/audioMute.js');
 const commandOsu = require('./commands/osu.js');
 const commandTweet = require('./commands/tweet.js');
 
@@ -79,6 +80,12 @@ DiscordClient.on('message', (msg) => {
                 case 'guildinfo':
 
                     commandGuildInfo(msg, args, DiscordClient);
+                    break;
+
+                case 'amute' :
+                case 'audiomute' :
+
+                    commandAudioMute(msg, args, DiscordClient);
                     break;
             }
 

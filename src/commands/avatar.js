@@ -8,6 +8,15 @@ const cfg = require('../../config/config.json');
 module.exports = function (msg, args, DiscordClient) {
 
     if (!args[0] || msg.mentions.users.first().id === msg.author.id) {
+
+        if(msg.author.avatar == null) {
+            embed = new Discord.RichEmbed()
+                .setColor(cfg.color)
+                .setTitle(msg.mentions.users.first().username + ' (' + msg.mentions.users.first().tag + ') doesn\'t have an avatar yet.')
+
+            msg.channel.send(embed);
+            return;
+        }                                       // If the user doesn't have any avatar, send a message then return
                                                 // If no args are provided or the author asked for its own avatar
         embed = new Discord.RichEmbed()
             .setColor(cfg.color)
@@ -17,6 +26,15 @@ module.exports = function (msg, args, DiscordClient) {
         msg.channel.send(embed);
 
     } else if (msg.mentions.users.first().id == DiscordClient.user.id) {
+
+        if(msg.mentions.users.first().avatar == null) {
+            embed = new Discord.RichEmbed()
+                .setColor(cfg.color)
+                .setTitle(msg.mentions.users.first().username + ' (' + msg.mentions.users.first().tag + ') doesn\'t have an avatar yet.')
+
+            msg.channel.send(embed);
+            return;
+        }                                       // If the user doesn't have any avatar, send a message then return
                                                 // If the message author asked for the bot avatar:
         embed = new Discord.RichEmbed()
             .setColor(cfg.color)
@@ -26,6 +44,15 @@ module.exports = function (msg, args, DiscordClient) {
         msg.channel.send(embed);
 
     } else if (msg.mentions.users.first()) {
+
+        if(msg.mentions.users.first().avatar == null) {
+            embed = new Discord.RichEmbed()
+                .setColor(cfg.color)
+                .setTitle(msg.mentions.users.first().username + ' (' + msg.mentions.users.first().tag + ') doesn\'t have an avatar yet.')
+
+            msg.channel.send(embed);
+            return;
+        }                                       // If the user doesn't have any avatar, send a message then return
 
         embed = new Discord.RichEmbed()
             .setColor(cfg.color)

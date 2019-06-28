@@ -36,6 +36,8 @@ module.exports = function (msg, args, DiscordClient) {
         mal.search('anime', msg.content.slice(12), {page : 0})
             .then(function(res) {
 
+                if(!res.results[0]){return};                    // Avoid error return if there are no results
+
                 const field = 'Type : ' + res.results[0].type + '\nEpisodes : ' + res.results[0].episodes + '\nMyAnimeList score : ' + res.results[0].score;
                 
                 const embed = new Discord.RichEmbed()
@@ -56,6 +58,8 @@ module.exports = function (msg, args, DiscordClient) {
 
         mal.search('manga', msg.content.slice(12), {page : 0})
             .then(function(res) {
+
+                if(!res.results[0]){return};                    // Avoid error return if there are no results
 
                 const field = 'Volumes : ' + res.results[0].volumes + '\nChapters : ' + res.results[0].chapters + '\nMyAnimeList score : ' + res.results[0].score;
                 
