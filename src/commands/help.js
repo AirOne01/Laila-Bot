@@ -12,7 +12,7 @@ module.exports = function (msg, args, DiscordClient) {
             .setColor(cfg.color)
             .setTitle('Command list')
             .addField('Games', 'mcserv <IP>\nosu [user] <username>', true)
-            .addField('Utility', 'avatar <@Username>\nhelp <command>', true);
+            .addField('Utility', 'avatar <@Username>\nhelp <command>\nmal <anime | manga> <NAME>', true);
 
         msg.channel.send(embed);
         
@@ -29,8 +29,7 @@ module.exports = function (msg, args, DiscordClient) {
                     .setDescription('Get you informations about osu players.\nUsage:\n```\nosu <username>\n```\nor\n```\nosu user <username>\n```')
                 
                 msg.channel.send(embed);
-                break;
-            
+                break;            
             case 'help':
             case 'commands':
             case 'cmd':
@@ -39,12 +38,11 @@ module.exports = function (msg, args, DiscordClient) {
                 embed = new Discord.RichEmbed()
                     .setColor(cfg.color)
                     .setTitle('\'help\' command')
-                    .setDescription('Get you the list of all the bot commands or infotmations on a command.\nUsage:\n```\nhelp\n```\nor\n```\nhelp <command>\n```')
+                    .setDescription('Get you the list of all the bot commands or informations on a command.\nUsage:\n```\nhelp\n```\nor\n```\nhelp <command>\n```')
                     .addField('Other names:', 'help, ?, commands, cmd')
 
                 msg.channel.send(embed);
                 break;
-
             case 'mcserv':
 
                 embed = new Discord.RichEmbed()
@@ -54,7 +52,26 @@ module.exports = function (msg, args, DiscordClient) {
 
                 msg.channel.send(embed);
                 break;
+            case 'mal' :
 
+                embed = new Discord.RichEmbed()
+                    .setColor(cfg.color)
+                    .setTitle('\'mal\' command')
+                    .setDescription('Get informations from MyAnimeList.\nUsage:\n```\nmal <anime | manga> <NAME>\n```')
+                
+                msg.channel.send(embed);
+                break;
+            case 'amute' :
+            case 'audiomute' :
+
+                    embed = new Discord.RichEmbed()
+                    .setColor(cfg.color)
+                    .setTitle('\'audiomute\' command')
+                    .setDescription('A basic command to forcefully mute someone who is connected to an audio channel.\nUsage:\n```\audiomute <@Username>\n```')
+                    .addField('Other name:', 'amute')
+
+                msg.channel.send(embed);
+                break;
             default:
 
                 const title = 'Unknow command \'' + args[0] + '\''

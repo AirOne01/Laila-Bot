@@ -6,6 +6,8 @@ const Discord = require('discord.js');
 
 module.exports = function(msg, args, DiscordClient) {
 
+    if(!msg.member.hasPermission('MUTE_MEMBERS')) return;               // Return if the msg author can't mute peoples.
+
     if (!args[0] || !msg.mentions.members.first()) {
 
         msg.channel.send('Please mention someone to mute.')

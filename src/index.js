@@ -19,6 +19,7 @@ const stc = require('../config/sentences.json');                        //
 const commandAvatar = require('./commands/avatar.js');                  //
 const commandGuildInfo = require('./commands/guildinfo.js');            //
 const commandHelp = require('./commands/help.js');                      //
+const commandLinkShorten = require('./commands/shorten.js')             //
 const commandMAL = require('./commands/mal.js');                        //
 const commandMCserv = require('./commands/mc.js');                      //
 const commandAudioMute = require('./commands/audioMute.js');            //
@@ -91,6 +92,24 @@ DiscordClient.on('message', (msg) => {                                  ////////
                                                                         //
                     commandAudioMute(msg, args, DiscordClient);         //
                     break;                                              //
+
+                case 'shorten' :
+
+                    commandLinkShorten(msg, args, DiscordClient);
+                    break;
+
+                default :
+
+                const title = 'Unknow command \'' + command + '\''
+                const desc = 'Please retry or type \'' + cfg.prefix + 'help\' for a list of commands'
+
+                embed = new Discord.RichEmbed()
+                    .setColor(cfg.color)
+                    .setTitle(title)
+                    .setDescription(desc)
+
+                msg.channel.send(embed);
+                break;
             }                                                           //
                                                                         //
         }                                                               //
