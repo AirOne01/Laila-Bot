@@ -22,20 +22,21 @@ module.exports = function (msg, args, DiscordClient) {
                     osuAPI.getBeatmaps({b: res[0].beatmapId})
                         .then(function(res) {
 
-                            const fieldScores = '**SS+** ' + user.counts.SSH + '\n**SS** ' + user.counts.SS + '\n**S+** ' + user.counts.SH + '\n**S** ' + user.counts.S + '\n**A** ' + user.counts.A + '\n**Accuracy**: ≈' + Math.round(user.accuracy*100)/100 + '%\n**PP: ' + user.pp.raw + '**'
+                            const fieldScores = '**𝕊𝕊+** ' + user.counts.SSH + '\n**SS** ' + user.counts.SS + '\n**𝕊+** ' + user.counts.SH + '\n**S** ' + user.counts.S + '\n**A** ' + user.counts.A + '\n**Accuracy**: ≈' + Math.round(user.accuracy*100)/100 + '%\n**PP: ' + user.pp.raw + '**'
                             const fieldStats = '**Username**: ' + user.name + '\n**Number of plays**: ' + user.counts.plays + '\n**Country**: ' + user.country + ' :flag_' + user.country.toLowerCase() + ':\n**Level**: ' + Math.round(user.level) + '\n**Rank**: #' + user.pp.rank + '\n**Country Rank**: #' + user.pp.countryRank;
                             const fieldBest = '**' + res[0].title + '** by **' + res[0].artist + '\nStatus**: ' + res[0].approvalStatus + '\n**Difficulty: **≈**' + Math.round(res[0].difficulty.rating*100)/100 + '☆\nMax combo**: ' + res[0].maxCombo
                             const title = user.name + ' on osu!'
                             const thumb = 'https://a.ppy.sh/' + user.id
+                            const icon = 'https://www.countryflags.io/' + user.country.toLowerCase() + '/flat/16.png'
                             const link = 'https://osu.ppy.sh/users/' + user.id
 
                             embed = new Discord.RichEmbed()
                                 .setColor(cfg.color)
-                                .setAuthor(title, '', link)
+                                .setAuthor(title, icon, link)
                                 .setThumbnail(thumb)
                                 .setFooter('osu!', 'https://upload.wikimedia.org/wikipedia/commons/d/d3/Osu%21Logo_%282015%29.png')
                                 .addField('Scores :', fieldScores, true)
-                                .addField('Stats :', fieldStats, true)
+                                .addField('Status :', fieldStats, true)
                                 .addField('Best score : ', fieldBest, false);
     
                             msg.channel.send(embed);
@@ -44,7 +45,7 @@ module.exports = function (msg, args, DiscordClient) {
 
                 })
                 .catch(function(err) {
-                    console.log('[osuAPI] Error in getting the best beatmap of ' + username + '.\nError :\n')
+                    console.log('[osuAPI] Error in getting informations of ' + username + '.\nError :\n')
                 })
     
             

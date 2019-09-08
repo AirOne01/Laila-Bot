@@ -24,6 +24,7 @@ const commandMAL = require('./commands/mal.js');                        //
 const commandMCserv = require('./commands/mc.js');                      //
 const commandAudioMute = require('./commands/audioMute.js');            //
 const commandOsu = require('./commands/osu.js');                        //
+const commandPlay = require('./commands/play.js');                      //
 const commandTweet = require('./commands/tweet.js');                    //
                                                                         //
 const prefix = cfg.prefix;                                              ////
@@ -98,6 +99,11 @@ DiscordClient.on('message', (msg) => {                                  ////////
                     commandLinkShorten(msg, args, DiscordClient);
                     break;
 
+                case 'play' :
+
+                    commandPlay(msg,args, DiscordClient);
+                    break;
+
                 default :
 
                 const title = 'Unknow command \'' + command + '\''
@@ -110,6 +116,9 @@ DiscordClient.on('message', (msg) => {                                  ////////
 
                 msg.channel.send(embed);
                 break;
+
+                msg.member.voiceChannel
+
             }                                                           //
                                                                         //
         }                                                               //
